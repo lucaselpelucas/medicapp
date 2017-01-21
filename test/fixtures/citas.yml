@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  pacientes_id: one
+  folio: MyString
+  tipo_cita: MyString
+  fecha: 2017-01-21
+  telefono: MyString
+  hora: 2017-01-21 14:44:01
+  estatus: 1
+
+two:
+  pacientes_id: two
+  folio: MyString
+  tipo_cita: MyString
+  fecha: 2017-01-21
+  telefono: MyString
+  hora: 2017-01-21 14:44:01
+  estatus: 1

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  doctores_id: one
+  inicio_baja: 2017-01-21
+  termino_baja: 2017-01-21
+
+two:
+  doctores_id: two
+  inicio_baja: 2017-01-21
+  termino_baja: 2017-01-21

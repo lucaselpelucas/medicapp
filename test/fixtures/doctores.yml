@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  centros_id: one
+  nombre: MyString
+  entrada: 2017-01-21 14:48:36
+  salida: 2017-01-21 14:48:36
+  universidad: MyString
+  rssp: MyString
+  cedulageneral: MyString
+  cedulaespecial: MyString
+  citasdia: 
+  especialidades_id: one
+
+two:
+  centros_id: two
+  nombre: MyString
+  entrada: 2017-01-21 14:48:36
+  salida: 2017-01-21 14:48:36
+  universidad: MyString
+  rssp: MyString
+  cedulageneral: MyString
+  cedulaespecial: MyString
+  citasdia: 
+  especialidades_id: two

@@ -1,0 +1,2 @@
+class CentrosMedicos < ApplicationRecord
+end

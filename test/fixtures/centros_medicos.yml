@@ -1,0 +1,27 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  unidadmedica: MyString
+  direccion: MyString
+  colonia: MyString
+  telefono: MyString
+  general: MyString
+  dental: MyString
+  consultoriorosa: MyString
+  epidemiologia: MyString
+  pediatria: MyString
+  hr_inicio: 2017-01-21 14:45:25
+  hr_cierre: 2017-01-21 14:45:25
+
+two:
+  unidadmedica: MyString
+  direccion: MyString
+  colonia: MyString
+  telefono: MyString
+  general: MyString
+  dental: MyString
+  consultoriorosa: MyString
+  epidemiologia: MyString
+  pediatria: MyString
+  hr_inicio: 2017-01-21 14:45:25
+  hr_cierre: 2017-01-21 14:45:25

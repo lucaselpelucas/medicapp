@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  nip: 1
+  permiso: 1
+  usuario: MyString
+  centros_id: one
+
+two:
+  nombre: MyString
+  nip: 1
+  permiso: 1
+  usuario: MyString
+  centros_id: two

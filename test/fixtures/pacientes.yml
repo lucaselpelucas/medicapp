@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  centros_id: one
+  poliza: MyString
+  folio: MyString
+  nombre: MyString
+  sexo: MyString
+  fecha_nacimiento: 2017-01-21
+  curp: MyString
+  parentesco: MyString
+  regimen: MyString
+  domicilio: MyText
+  colonia: MyString
+  cp: 
+  ciudad: MyString
+  estado: MyString
+  validez_inicio: 2017-01-21
+  validez_termino: 2017-01-21
+  reafiliacion: 2017-01-21
+
+two:
+  centros_id: two
+  poliza: MyString
+  folio: MyString
+  nombre: MyString
+  sexo: MyString
+  fecha_nacimiento: 2017-01-21
+  curp: MyString
+  parentesco: MyString
+  regimen: MyString
+  domicilio: MyText
+  colonia: MyString
+  cp: 
+  ciudad: MyString
+  estado: MyString
+  validez_inicio: 2017-01-21
+  validez_termino: 2017-01-21
+  reafiliacion: 2017-01-21
