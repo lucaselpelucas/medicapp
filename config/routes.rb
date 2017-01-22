@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  post 'login/', to: 'application#legion', as: 'login'
   resources :permisos_doctores
   resources :pacientes
   resources :horas
