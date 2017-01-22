@@ -46,6 +46,6 @@ class CitasController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def cita_params
-      params.require(:cita).permit(:pacientes_id_id, :folio, :tipo_cita, :fecha, :telefono, :hora, :estatus, :cancelada)
+      params.require(:cita).permit(:pacientes_id, :folio, :tipo_cita, :fecha, :telefono, :hora, :estatus, :cancelada)
     end
 end

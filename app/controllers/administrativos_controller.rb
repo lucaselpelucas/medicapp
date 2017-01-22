@@ -46,6 +46,6 @@ class AdministrativosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def administrativo_params
-      params.require(:administrativo).permit(:nombre, :nip, :permiso, :usuario, :centros_id_id)
+      params.require(:administrativo).permit(:nombre, :nip, :permiso, :usuario, :centros_id)
     end
 end

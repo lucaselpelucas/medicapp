@@ -46,6 +46,6 @@ class CentrosEspecialidadesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def centros_especialidade_params
-      params.require(:centros_especialidade).permit(:centros_medicos_id_id, :especialidades_id_id)
+      params.require(:centros_especialidade).permit(:centros_medicos_id, :especialidades_id)
     end
 end

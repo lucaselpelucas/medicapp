@@ -46,6 +46,6 @@ class DoctoresHorasController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def doctores_hora_params
-      params.require(:doctores_hora).permit(:doctores_id_id, :horas_id_id)
+      params.require(:doctores_hora).permit(:doctores_id, :horas_id)
     end
 end
