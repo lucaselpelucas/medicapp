@@ -24,7 +24,6 @@ class EspecialidadesController < ApplicationController
   #   end
   # end
   def create
-
     @especialidade = Especialidades.new(especialidade_params)
 
     if @especialidade.save
