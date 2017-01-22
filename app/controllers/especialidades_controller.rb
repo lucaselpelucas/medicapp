@@ -23,6 +23,17 @@ class EspecialidadesController < ApplicationController
   #     render json: @especialidade.errors, status: :unprocessable_entity
   #   end
   # end
+  def create
+
+    @especialidade = Especialidades.new(especialidade_params)
+
+    if @especialidade.save
+      render json: @especialidade, status: :created, location: @especialidade
+    else
+      render json: @especialidade.errors, status: :unprocessable_entity
+    end
+  end
+
 
   # PATCH/PUT /especialidades/1
   # def update
@@ -48,4 +59,19 @@ class EspecialidadesController < ApplicationController
   #   def especialidade_params
   #     params.require(:especialidade).permit(:nombre, :estatus)
   #   end
+  def destroy
+    @especialidade.destroy
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_especialidade
+      @especialidade = Especialidades.find(params[:id])
+    end
+
+    # Only allow a trusted parameter "white list" through.
+    def especialidade_params
+      params.permit(:nombre, :estatus)
+    end
+>>>>>>> changes  to doctors and patients
 end
