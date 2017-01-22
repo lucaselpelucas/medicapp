@@ -12,6 +12,11 @@ class PacientesController < ApplicationController
   def show
     render json: @paciente
   end
+  def get_pacientes_poliza
+    post = params[:poliza]
+    results = Pacientes.where("POLIZA = #{post}")
+    render json: results
+  end
 
   # POST /pacientes
   def create
