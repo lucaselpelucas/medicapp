@@ -15,6 +15,7 @@ class EspecialidadesController < ApplicationController
 
   # POST /especialidades
   def create
+    
     @especialidade = Especialidades.new(especialidade_params)
 
     if @especialidade.save
@@ -46,6 +47,6 @@ class EspecialidadesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def especialidade_params
-      params.require(:especialidade).permit(:nombre, :estatus)
+      params.permit(:nombre, :estatus)
     end
 end
