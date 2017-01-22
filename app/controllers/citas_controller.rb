@@ -1,10 +1,12 @@
 class CitasController < ApplicationController
-  before_action :set_cita, only: [:show, :update, :destroy]
+  before_action :set_cita, only: [:show, :update, :destroy, :cancel]
 
   # GET /citas
   def index
-    @citas = Citas.all
+    # TODO una vez se tenga al usuario con sesion
+    # @citas = Citas.where centros_id: :session.centros_id
 
+    @citas = Citas.all
     render json: @citas
   end
 
@@ -33,6 +35,27 @@ class CitasController < ApplicationController
     end
   end
 
+  def cancel
+    @cita.cancelada = params(:cancelada)
+    if @cita.update
+      render json: @cita
+    else
+      render json: @cita.errors, status: :unprocessable_entity
+    end    
+  end
+
+  def search
+    @cita = Cita.where folio: params(:folio)
+    render json: @cita
+  end  
+
+
+  def show_doctor
+    @cita = Cita.where folio: params(:folio)
+    render json: @cita
+  end  
+
+
   # DELETE /citas/1
   def destroy
     @cita.destroy
@@ -46,6 +69,6 @@ class CitasController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def cita_params
-      params.require(:cita).permit(:pacientes_id, :folio, :tipo_cita, :fecha, :telefono, :hora, :estatus, :cancelada)
+      params.require(:cita).permit(:pacientes_id, :folio, :tipo_cita, :fecha, :telefono, :hora, :estatus, :cancelada, :doctor_id, :especialidad_id)
     end
 end

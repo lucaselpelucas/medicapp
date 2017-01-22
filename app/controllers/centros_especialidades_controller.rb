@@ -9,34 +9,34 @@ class CentrosEspecialidadesController < ApplicationController
   end
 
   # GET /centros_especialidades/1
-  def show
-    render json: @centros_especialidade
-  end
+  # def show
+  #   render json: @centros_especialidade
+  # end
 
   # POST /centros_especialidades
-  def create
-    @centros_especialidade = CentrosEspecialidades.new(centros_especialidade_params)
+  # def create
+  #   @centros_especialidade = CentrosEspecialidades.new(centros_especialidade_params)
 
-    if @centros_especialidade.save
-      render json: @centros_especialidade, status: :created, location: @centros_especialidade
-    else
-      render json: @centros_especialidade.errors, status: :unprocessable_entity
-    end
-  end
+  #   if @centros_especialidade.save
+  #     render json: @centros_especialidade, status: :created, location: @centros_especialidade
+  #   else
+  #     render json: @centros_especialidade.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /centros_especialidades/1
-  def update
-    if @centros_especialidade.update(centros_especialidade_params)
-      render json: @centros_especialidade
-    else
-      render json: @centros_especialidade.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @centros_especialidade.update(centros_especialidade_params)
+  #     render json: @centros_especialidade
+  #   else
+  #     render json: @centros_especialidade.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /centros_especialidades/1
-  def destroy
-    @centros_especialidade.destroy
-  end
+  # def destroy
+  #   @centros_especialidade.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.

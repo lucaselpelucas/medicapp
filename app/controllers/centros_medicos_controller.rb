@@ -14,29 +14,29 @@ class CentrosMedicosController < ApplicationController
   end
 
   # POST /centros_medicos
-  def create
-    @centros_medico = CentrosMedicos.new(centros_medico_params)
+  # def create
+  #   @centros_medico = CentrosMedicos.new(centros_medico_params)
 
-    if @centros_medico.save
-      render json: @centros_medico, status: :created, location: @centros_medico
-    else
-      render json: @centros_medico.errors, status: :unprocessable_entity
-    end
-  end
+  #   if @centros_medico.save
+  #     render json: @centros_medico, status: :created, location: @centros_medico
+  #   else
+  #     render json: @centros_medico.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # PATCH/PUT /centros_medicos/1
-  def update
-    if @centros_medico.update(centros_medico_params)
-      render json: @centros_medico
-    else
-      render json: @centros_medico.errors, status: :unprocessable_entity
-    end
-  end
+  # def update
+  #   if @centros_medico.update(centros_medico_params)
+  #     render json: @centros_medico
+  #   else
+  #     render json: @centros_medico.errors, status: :unprocessable_entity
+  #   end
+  # end
 
   # DELETE /centros_medicos/1
-  def destroy
-    @centros_medico.destroy
-  end
+  # def destroy
+  #   @centros_medico.destroy
+  # end
 
   private
     # Use callbacks to share common setup or constraints between actions.
