@@ -35,13 +35,22 @@ class CitasController < ApplicationController
     end
   end
 
+  def confirm
+    @cita.estatus = params(:estatus)
+    if @cita.update
+      render json: @cita
+    else
+      render json: @cita.errors, status: :unprocessable_entity
+    end
+  end
+
   def cancel
     @cita.cancelada = params(:cancelada)
     if @cita.update
       render json: @cita
     else
       render json: @cita.errors, status: :unprocessable_entity
-    end    
+    end
   end
 
   def search
@@ -51,7 +60,7 @@ class CitasController < ApplicationController
 
 
   def show_doctor
-    @cita = Cita.where folio: params(:folio)
+    @cita = Cita.where doctor_id: params(:doctor_id)
     render json: @cita
   end  
 
@@ -69,6 +78,6 @@ class CitasController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def cita_params
-      params.require(:cita).permit(:pacientes_id, :folio, :tipo_cita, :fecha, :telefono, :hora, :estatus, :cancelada, :doctor_id, :especialidad_id)
+      params.fetch(:cita, {}).permit(:pacientes_id, :folio, :tipo_cita, :fecha, :telefono, :hora, :estatus, :cancelada, :doctor_id, :especialidad_id)
     end
 end

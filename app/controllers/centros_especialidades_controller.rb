@@ -2,11 +2,11 @@ class CentrosEspecialidadesController < ApplicationController
   before_action :set_centros_especialidade, only: [:show, :update, :destroy]
 
   # GET /centros_especialidades
-  def index
-    @centros_especialidades = CentrosEspecialidades.all
+  # def index
+  #   @centros_especialidades = CentrosEspecialidades.all
 
-    render json: @centros_especialidades
-  end
+  #   render json: @centros_especialidades
+  # end
 
   # GET /centros_especialidades/1
   # def show
@@ -38,14 +38,14 @@ class CentrosEspecialidadesController < ApplicationController
   #   @centros_especialidade.destroy
   # end
 
-  private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_centros_especialidade
-      @centros_especialidade = CentrosEspecialidades.find(params[:id])
-    end
+  # private
+  #   # Use callbacks to share common setup or constraints between actions.
+  #   def set_centros_especialidade
+  #     @centros_especialidade = CentrosEspecialidades.find(params[:id])
+  #   end
 
-    # Only allow a trusted parameter "white list" through.
-    def centros_especialidade_params
-      params.require(:centros_especialidade).permit(:centros_medicos_id, :especialidades_id)
-    end
+  #   # Only allow a trusted parameter "white list" through.
+  #   def centros_especialidade_params
+  #     params.require(:centros_especialidade).permit(:centros_medicos_id, :especialidades_id)
+  #   end
 end
