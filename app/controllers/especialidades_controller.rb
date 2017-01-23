@@ -24,6 +24,7 @@ class EspecialidadesController < ApplicationController
   #   end
   # end
   def create
+
     @especialidade = Especialidades.new(especialidade_params)
 
     if @especialidade.save
@@ -72,5 +73,4 @@ class EspecialidadesController < ApplicationController
     def especialidade_params
       params.permit(:nombre, :estatus)
     end
->>>>>>> changes  to doctors and patients
 end
