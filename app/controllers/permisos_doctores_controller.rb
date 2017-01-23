@@ -46,6 +46,6 @@ class PermisosDoctoresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def permisos_doctore_params
-      params.require(:permisos_doctore).permit(:doctores_id, :inicio_baja, :termino_baja)
+      params.permit(:doctores_id, :inicio_baja, :termino_baja)
     end
 end

@@ -46,6 +46,6 @@ class CentrosMedicosController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def centros_medico_params
-      params.require(:centros_medico).permit(:unidadmedica, :direccion, :colonia, :telefono, :general, :dental, :consultoriorosa, :epidemiologia, :pediatria, :hr_inicio, :hr_cierre)
+      params.permit(:unidadmedica, :direccion, :colonia, :telefono, :general, :dental, :consultoriorosa, :epidemiologia, :pediatria, :hr_inicio, :hr_cierre)
     end
 end
