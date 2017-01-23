@@ -8,6 +8,9 @@ class CreateCitas < ActiveRecord::Migration[5.0]
       t.string :telefono
       t.time :hora
       t.integer :estatus
+      t.integer :cancelada
+      t.references :doctores_id, foreign_key: true
+      t.references :especialidades_id, foreign_key: true
 
       t.timestamps
     end

@@ -15,6 +15,7 @@ class DoctoresController < ApplicationController
 
   # POST /doctores
   def create
+    binding.pry
     @doctore = Doctores.new(doctore_params)
 
     if @doctore.save
@@ -26,6 +27,7 @@ class DoctoresController < ApplicationController
 
   # PATCH/PUT /doctores/1
   def update
+    binding.pry
     if @doctore.update(doctore_params)
       render json: @doctore
     else
@@ -46,6 +48,6 @@ class DoctoresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def doctore_params
-      params.permit(:centros_id, :nombre, :entrada, :salida, :universidad, :rssp, :cedulageneral, :cedulaespecial, :citasdia, :especialidades_id, :baja)
+      params.permit(:centros_medicos_id, :nombre, :entrada, :salida, :universidad, :rssp, :cedulageneral, :cedulaespecial, :citasdia, :especialidades_id, :baja)
     end
 end

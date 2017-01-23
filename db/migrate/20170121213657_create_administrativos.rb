@@ -5,7 +5,7 @@ class CreateAdministrativos < ActiveRecord::Migration[5.0]
       t.integer :nip
       t.integer :permiso
       t.string :usuario
-      t.references :centros_id, foreign_key: true
+      t.references :centros_medicos_id, foreign_key: true
 
       t.timestamps
     end

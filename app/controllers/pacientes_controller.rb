@@ -12,6 +12,11 @@ class PacientesController < ApplicationController
   def show
     render json: @paciente
   end
+  def get_pacientes_poliza
+    post = params[:poliza]
+    results = Pacientes.where("POLIZA = #{post}")
+    render json: results
+  end
 
   # POST /pacientes
   def create
@@ -46,6 +51,6 @@ class PacientesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def paciente_params
-      params.permit(:centros_id, :poliza, :folio, :nombre, :sexo, :fecha_nacimiento, :curp, :parentesco, :regimen, :domicilio, :colonia, :cp, :ciudad, :estado, :validez_inicio, :validez_termino, :reafiliacion)
+      params.permit(:centros_medicos_id, :poliza, :folio, :nombre, :sexo, :fecha_nacimiento, :curp, :parentesco, :regimen, :domicilio, :colonia, :cp, :ciudad, :estado, :validez_inicio, :validez_termino, :reafiliacion)
     end
 end
