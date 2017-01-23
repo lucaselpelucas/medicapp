@@ -1,7 +1,7 @@
 class CreatePacientes < ActiveRecord::Migration[5.0]
   def change
     create_table :pacientes do |t|
-      t.references :centros_medicos_id, foreign_key: true
+      t.references :centros_medicos, foreign_key: true
       t.string :poliza
       t.string :folio
       t.string :nombre
@@ -12,7 +12,7 @@ class CreatePacientes < ActiveRecord::Migration[5.0]
       t.string :regimen
       t.text :domicilio
       t.string :colonia
-      t.double :cp
+      t.integer :cp
       t.string :ciudad
       t.string :estado
       t.date :validez_inicio

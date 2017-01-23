@@ -1,7 +1,7 @@
 class CreateDoctores < ActiveRecord::Migration[5.0]
   def change
     create_table :doctores do |t|
-      t.references :centros_medicos_id, foreign_key: true
+      t.references :centros_medicos, foreign_key: true
       t.string :nombre
       t.time :entrada
       t.time :salida
@@ -9,8 +9,8 @@ class CreateDoctores < ActiveRecord::Migration[5.0]
       t.string :rssp
       t.string :cedulageneral
       t.string :cedulaespecial
-      t.double :citasdia
-      t.references :especialidades_id, foreign_key: true
+      t.integer :citasdia
+      t.references :especialidades, foreign_key: true
       t.integer :baja
 
       t.timestamps
