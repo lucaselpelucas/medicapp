@@ -30,16 +30,17 @@ gem 'mysql2', '~> 0.4.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'capistrano'
-  gem 'capistrano3-puma'
-  gem 'capistrano-rails', require: false
-  gem 'capistrano-bundler', require: false
-  gem 'capistrano-rvm'
+
   gem 'pry'
   gem 'byebug', platform: :mri
 end
 
 group :development do
+  gem 'capistrano', '~> 3.0'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rails', require: false
+  gem 'capistrano-bundler', require: false
+  gem 'capistrano-rvm'
   
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

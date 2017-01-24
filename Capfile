@@ -30,13 +30,10 @@ install_plugin Capistrano::SCM::Git
 # require "capistrano/rbenv"
 # require "capistrano/chruby"
 # require "capistrano/bundler"
-# require "capistrano/rails/assets"
 # require "capistrano/rails/migrations"
 # require "capistrano/passenger"
 require 'capistrano/bundler'
 require 'capistrano/rvm'
-require 'capistrano/rails/assets' # for asset handling add
-require 'capistrano/rails/migrations' # for running migrations
 require 'capistrano/puma'
 
 # Load custom tasks from `lib/capistrano/tasks` if you have any defined

@@ -2,13 +2,13 @@
 lock "3.7.1"
 
 set :application, 'medicapp'
-set :repo_url, 'git@bitbucket.org:makingcode/medicappv2.git' # Edit this to match your repository
+set :repo_url, 'git@github.com:danielosbaldo/medicapp.git' # Edit this to match your repository
 set :branch, :master
 set :deploy_to, '/home/deploy/medicapp'
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml}
-set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
-set :keep_releases, 5
+set :linked_dirs, %w{log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system public/uploads}
+set :keep_releases, 1
 set :rvm_type, :user
 set :rvm_ruby_version, '2.3.1' # Edit this if you are using MRI Ruby
 
@@ -26,3 +26,37 @@ set :puma_workers, 0
 set :puma_worker_timeout, nil
 set :puma_init_active_record, true
 set :puma_preload_app, false
+
+namespace :puma do
+  desc 'Create Directories for Puma Pids and Socket'
+  task :make_dirs do
+    on roles(:app) do
+      execute "mkdir #{shared_path}/tmp/sockets -p"
+      execute "mkdir #{shared_path}/tmp/pids -p"
+    end
+  end
+
+  before :start, :make_dirs
+end
+
+namespace :deploy do
+
+
+  desc 'Initial Deploy'
+  task :initial do
+    on roles(:app) do
+      before 'deploy:restart', 'puma:start'
+      invoke 'deploy'
+    end
+  end
+
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      invoke 'puma:restart'
+    end
+  end
+
+  after  :finishing,    :cleanup
+  after  :finishing,    :restart
+end
