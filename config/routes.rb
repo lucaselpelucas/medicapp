@@ -11,9 +11,12 @@ Rails.application.routes.draw do
   resources :citas
   resources :administrativos
   # resources :centros_especialidades
+  post '/searchpatient', to: 'pacientes#searchorcreate'
   post '/citas/cancelar', to: 'citas#cancel'
   post '/citas/buscar', to: 'citas#search'
   post '/citas/confirmar', to: 'citas#confirm'
   post '/citas/buscar_doctor', to: 'citas#show_doctor'
+  post '/sessions' => 'sessions#create'
+  post '/sessions/:id' => 'sessions#destroy'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

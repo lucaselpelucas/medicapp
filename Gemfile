@@ -14,6 +14,11 @@ gem 'rails', '~> 5.0.1'
 gem 'figaro'
 gem 'puma', '~> 3.0'
 
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.5'
+# for soap cal to polizas
+gem 'savon' # http://savonrb.com/version2/response.html read it its simple
+
 gem 'mysql2', '~> 0.4.4'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
@@ -22,11 +27,15 @@ gem 'mysql2', '~> 0.4.4'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+# Usa esta gema para la serializacion en JSON
+gem 'active_model_serializers', '~> 0.10.0'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
-# gem 'rack-cors'
+gem 'rack-cors'
+# bcrypt
+gem 'bcrypt'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

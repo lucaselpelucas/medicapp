@@ -1,5 +1,7 @@
 class DoctoresController < ApplicationController
   before_action :set_doctore, only: [:show, :update, :destroy]
+  before_action :validate_user, only: [:get,:create, :update, :destroy]
+  before_action :validate_type, only: [:create, :update]
 
   # GET /doctores
   def index
