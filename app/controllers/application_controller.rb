@@ -3,7 +3,6 @@ class ApplicationController < ActionController::API
   before_action :validate_login
 
   def validate_login
-    binding.pry
     token = request.headers["X-Api-Key"]
     return unless token
     paciente = Pacientes.find_by token: token
