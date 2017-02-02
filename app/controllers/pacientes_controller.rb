@@ -1,7 +1,7 @@
 class PacientesController < ApplicationController
   before_action :set_paciente, only: [:show, :update, :destroy]
-  before_action :validate_user, only: [:create, :update, :destroy]
-  before_action :validate_type, only: [:create, :update]
+  before_action :validate_paciente, only: [:create, :update, :destroy]
+  #before_action :validate_type, only: [:create, :update]
 
   # GET /pacientes
   def index
@@ -13,7 +13,7 @@ class PacientesController < ApplicationController
      post = params[:user]
       #pass = params[:pass]
       # soapcall in console
-      #TODO:: change to controller login http://savonrb.com/version2/response.html 
+      #TODO:: change to controller login http://savonrb.com/version2/response.html
       client = Savon.client do
         strip_namespaces false
         wsdl "http://n13.saludsonora.gob.mx:8081/WebServiceAM/SeguroPopular/datosPoliza.asmx?WSDL"
@@ -101,7 +101,7 @@ class PacientesController < ApplicationController
       begin
         @paciente = Pacientes.find(params[:id])
       rescue ActiveRecord::RecordNotFound
-        paciente = Paciente.new
+        paciente = Pacientes.new
         paciente.errors.add(:id, "Wrong ID provided")
         render_error(paciente,404) and return
       end

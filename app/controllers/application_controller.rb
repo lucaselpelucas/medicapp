@@ -2,6 +2,15 @@ class ApplicationController < ActionController::API
   before_action :check_header
   before_action :validate_login
 
+  private
+  def check_header
+    if ['POST','PUT','PATCH'].include? request.method
+      if request.content_type != "application/vnd.api+json"
+        head 406 and return
+      end
+    end
+  end
+
   def validate_login
     token = request.headers["X-Api-Key"]
     return unless token
@@ -13,7 +22,7 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def validate_user
+  def validate_paciente
     head 403 and return unless @current_paciente
   end
 
@@ -25,17 +34,8 @@ class ApplicationController < ActionController::API
     }
   end
 
-  private
-  def check_header
-    if ['POST','PUT','PATCH'].include? request.method
-      if request.content_type != "application/vnd.api+json"
-        head 406 and return
-      end
-    end
-  end
-  
-
   def validate_type
+    debugger
     if params['data'] && params['data']['type']
       if params['data']['type'] == params[:controller]
         return true
@@ -44,15 +44,8 @@ class ApplicationController < ActionController::API
     head 409 and return
   end
 
-  def validate_paciente
-    token = request.headers["X-Api-Key"]
-    head 403 and return unless token
-    paciente = Paciente.find_by token: token
-    head 403 and return unless paciente
-  end
-
   def render_error(resource, status)
-    render json: resource, status: status, adapter: :json_api, serializer: ActiveModel::Serializer::ErrorSerializer
+    render json: resource, status: status, adapter: :json_api, serializer: ActiveModel::Serializer::ErrorSerializer, meta: default_meta
   end
 
 
