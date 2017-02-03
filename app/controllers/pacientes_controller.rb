@@ -57,7 +57,7 @@ class PacientesController < ApplicationController
       end
       #TODO: terminar de guardar los usuarios y despues generar el token\
     end
-    render json: response.to_hash
+    render json: sata
   end
   # GET /pacientes/1
   def show
