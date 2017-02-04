@@ -33,7 +33,8 @@ class PacientesController < ApplicationController
     #declaramos la variable para poder manipularla con facilidad en la siguientes lineas
     #TODO: call response succes and validate response.susses?
     sata = response.body[:obtener_xml_response][:obtener_xml_result][:beneficiario]
-    sata.each do |list|
+
+    sata.to_hash.each do |list|
       folio = list[:int64_folio_poliza] + "-" + list[:int_id_beneficiario]
       paciente = Pacientes.find_by(folio: folio)
       if paciente.blank?

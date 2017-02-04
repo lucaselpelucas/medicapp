@@ -8,14 +8,14 @@ default: &default
   adapter: mysql2
   pool: 5
   timeout: 5000
-  username: danielosbaldo
-  password: 123tamarindo
-  host: medicapidb.cafkoetbrrnh.us-west-2.rds.amazonaws.com
+  username: makinggroup
+  password: go5zu95ta3
+  host: mysql.server287.com
   port: 3306
 
 development:
   <<: *default
-  database: medicapp
+  database: makinggroup_prueba
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -26,4 +26,4 @@ test:
 
 production:
   <<: *default
-  database: medicapp
+  database: makinggroup_prueba
