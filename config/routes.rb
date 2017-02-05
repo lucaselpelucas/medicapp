@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   post '/citas/buscar_doctor', to: 'citas#show_doctor'
   post '/sessions' => 'sessions#create'
   post '/sessions/:id' => 'sessions#destroy'
+  post '/sessionadmin', to: 'sessions#create_admin'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

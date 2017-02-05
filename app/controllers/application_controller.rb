@@ -22,6 +22,22 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def validate_admin_login
+    token = request.headers["X-Api-Key"]
+    return unless token
+    admin = Administradores.find_by token: token
+    return unless admin
+    if 15.minutes.ago < admin.updated_at
+      debugger
+      admin.touch
+      @current_admin = admin
+    end
+  end
+
+  def validate_admin
+    head 403 and return unless @current_admin
+  end
+
   def validate_paciente
     head 403 and return unless @current_paciente
   end

@@ -8,8 +8,12 @@ class PacientesController < ApplicationController
     @pacientes = Pacientes.all
     render json: @pacientes
   end
+  def lookadmin
+
+  end
 
   def searchorcreate
+    debugger
      post = params[:user]
       #pass = params[:pass]
       # soapcall in console
@@ -25,16 +29,12 @@ class PacientesController < ApplicationController
         advanced_typecasting true
         response_parser :nokogiri
       end
-      #results = ActiveRecord::Base.connection.exec_query %Q{CALL login('#{post}','#{pass}',@lls)}
-      #results = ActiveRecord::Base.connection.exec_query %Q{select @lls}
-      #ActiveRecord::Base.clear_active_connections!
       # TODO: hay que convertirlo a json para manipularlo de una mejor manera
       #render json: response
     #declaramos la variable para poder manipularla con facilidad en la siguientes lineas
     #TODO: call response succes and validate response.susses?
     sata = response.body[:obtener_xml_response][:obtener_xml_result][:beneficiario]
-
-    sata.to_hash.each do |list|
+    sata.each do |list|
       folio = list[:int64_folio_poliza] + "-" + list[:int_id_beneficiario]
       paciente = Pacientes.find_by(folio: folio)
       if paciente.blank?
@@ -44,7 +44,7 @@ class PacientesController < ApplicationController
           if centro.save
             p "centro saved"
           else
-            p "centro existente"# render json: centro.errors, status: :unprocessable_entity
+            p "centro tuvo problema"# render json: centro.errors, status: :unprocessable_entity
           end
         end
         paciente = Pacientes.new(centros_medicos_id: centro.centros_medicos_id ,POLIZA: list[:int64_folio_poliza],folio: folio)
@@ -58,6 +58,7 @@ class PacientesController < ApplicationController
       end
       #TODO: terminar de guardar los usuarios y despues generar el token\
     end
+    debugger;
     render json: sata
   end
   # GET /pacientes/1
