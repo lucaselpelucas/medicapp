@@ -13,7 +13,6 @@ class PacientesController < ApplicationController
   end
 
   def searchorcreate
-    debugger
      post = params[:user]
       #pass = params[:pass]
       # soapcall in console
@@ -58,7 +57,6 @@ class PacientesController < ApplicationController
       end
       #TODO: terminar de guardar los usuarios y despues generar el token\
     end
-    debugger;
     render json: sata
   end
   # GET /pacientes/1

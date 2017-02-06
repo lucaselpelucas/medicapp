@@ -28,7 +28,6 @@ class ApplicationController < ActionController::API
     admin = Administradores.find_by token: token
     return unless admin
     if 60.minutes.ago < admin.updated_at
-      debugger
       admin.touch
       @current_admin = admin
     end
@@ -51,7 +50,6 @@ class ApplicationController < ActionController::API
   end
 
   def validate_type
-    debugger
     if params['data'] && params['data']['type']
       if params['data']['type'] == params[:controller]
         return true

@@ -2,7 +2,6 @@ class SessionsController < ApplicationController
   def create_admin
     data = params
     Rails.logger.error params.to_yaml
-    debugger
     admin = Administradores.where(nip: data[:nip]).first
     head 406 and return unless admin
     if admin.nip == (data[:nip].to_i)
