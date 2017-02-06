@@ -2,7 +2,7 @@ class DoctoresController < ApplicationController
   before_action :set_doctore, only: [:show, :update, :destroy]
   before_action :validate_admin_login, only:[:index,:create,:update,:destroy]
   before_action :validate_admin, only: [:index,:create, :update, :destroy]
-  before_action :validate_type, only: [:create, :update]
+  # reparar este before action before_action :validate_type, only: [:create, :update]
 
   # GET /doctores
   def index
@@ -51,6 +51,8 @@ class DoctoresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def doctore_params
-      params.permit(:centros_medicos_id, :nombre, :entrada, :salida, :universidad, :rssp, :cedulageneral, :cedulaespecial, :citasdia, :especialidades_id, :baja)
+      params.permit(:centros_medicos_id, :primer_nombre, :ENTRADA, :salida, :SALIDA, :UNIVERSIDAD,
+       :cedula_profesional, :SSA, :estatus, :especialidades_id, :baja, :segundo_nombre, :primer_apellido ,
+       :segundo_apellido, :nacionalidad, :consultorio_asignado, :tipo_contratacion, :inicio_contratacion, :fin_contratacion)
     end
 end

@@ -7,7 +7,7 @@ class CitasController < ApplicationController
     # @citas = Citas.where centros_id: :session.centros_id
 
     @citas = Citas.all
-    render json: @citas
+    render json: @citas.as_json(include: [:pacientes ,:centros_medicos, :doctores])
   end
 
   # GET /citas/1
@@ -56,13 +56,13 @@ class CitasController < ApplicationController
   def search
     @cita = Cita.where folio: params(:folio)
     render json: @cita
-  end  
+  end
 
 
   def show_doctor
     @cita = Cita.where doctor_id: params(:doctor_id)
     render json: @cita
-  end  
+  end
 
 
   # DELETE /citas/1

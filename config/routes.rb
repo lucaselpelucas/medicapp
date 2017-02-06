@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   post '/sessions' => 'sessions#create'
   post '/sessions/:id' => 'sessions#destroy'
   post '/sessionadmin', to: 'sessions#create_admin'
+  #get citas por centros_medico
+  get '/citas_medicas/:id', to: 'centros_medicos#citascentros'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

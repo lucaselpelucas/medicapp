@@ -27,7 +27,7 @@ class ApplicationController < ActionController::API
     return unless token
     admin = Administradores.find_by token: token
     return unless admin
-    if 15.minutes.ago < admin.updated_at
+    if 60.minutes.ago < admin.updated_at
       debugger
       admin.touch
       @current_admin = admin
