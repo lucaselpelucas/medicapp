@@ -1,3 +1,3 @@
 class AdministradoresSerializer < ActiveModel::Serializer
-  attributes :id, :nip, :token
+  attributes :id, :primer_nombre, :centros_medicos, :nip, :token #nice stuff call relational data :centros_medicos
 end

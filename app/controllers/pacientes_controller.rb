@@ -46,7 +46,9 @@ class PacientesController < ApplicationController
             p "centro tuvo problema"# render json: centro.errors, status: :unprocessable_entity
           end
         end
-        paciente = Pacientes.new(centros_medicos_id: centro.centros_medicos_id ,POLIZA: list[:int64_folio_poliza],folio: folio)
+        d = DateTime.now()
+        idkey = d.strftime("%H%M%S%Y%m%d") + folio[-4..-1]
+        paciente = Pacientes.new(centros_medicos_id: centro.centros_medicos_id ,POLIZA: list[:int64_folio_poliza],folio: idkey, SP: folio,primer_nombre: list[:str_nombres],fecha_nacimiento: list[:dt_ffecha_nacimiento],SEXO: list[:chr_sexo] )
         if paciente.save
           p "paciente saved" #render json: paciente, status: :created
         else
