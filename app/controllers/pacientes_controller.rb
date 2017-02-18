@@ -37,7 +37,7 @@ class PacientesController < ApplicationController
       folio = list[:int64_folio_poliza] + "-" + list[:int_id_beneficiario]
       paciente = Pacientes.find_by(folio: folio)
       if paciente.blank?
-        centro = CentrosMedicos.find_by(clues: list[:str_clues])
+        centro = CentrosMedicos.find_by(SP: list[:str_clues])
         if centro.blank?
           centro = CentrosMedicos.new(UNIDADMEDICA: list[:str_unidad_medica],clues: list[:str_clues])
           if centro.save
@@ -48,7 +48,9 @@ class PacientesController < ApplicationController
         end
         d = DateTime.now()
         idkey = d.strftime("%H%M%S%Y%m%d") + folio[-4..-1]
-        paciente = Pacientes.new(centros_medicos_id: centro.centros_medicos_id ,POLIZA: list[:int64_folio_poliza],folio: idkey, SP: folio,primer_nombre: list[:str_nombres],fecha_nacimiento: list[:dt_ffecha_nacimiento],SEXO: list[:chr_sexo] )
+        paciente = Pacientes.new(centros_medicos_id: centro.centros_medicos_id ,POLIZA: list[:int64_folio_poliza],
+        folio: idkey, SP: folio,primer_nombre: list[:str_nombres],fecha_nacimiento: list[:dt_ffecha_nacimiento],
+        CURP: list[:str_curp], SEXO: list[:chr_sexo] )
         if paciente.save
           p "paciente saved" #render json: paciente, status: :created
         else
