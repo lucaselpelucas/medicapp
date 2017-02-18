@@ -5,7 +5,7 @@ class PacientesController < ApplicationController
 
   # GET /pacientes
   def index
-    @pacientes = Pacientes.all
+    @pacientes = Pacientes.where centros_medicos_id: params[:centros_medicos_id]
     render json: @pacientes
   end
 
