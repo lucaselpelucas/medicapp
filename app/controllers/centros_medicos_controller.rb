@@ -1,5 +1,5 @@
 class CentrosMedicosController < ApplicationController
-  before_action :set_centros_medico, only: [:show, :update, :destroy]
+  before_action :set_centros_medico, only: [:citascentros, :show, :update, :destroy]
 
   # GET /centros_medicos
   def index
@@ -11,6 +11,14 @@ class CentrosMedicosController < ApplicationController
   # GET /centros_medicos/1
   def show
     render json: @centros_medico
+  end
+
+  #GET /citas_medicas/1
+  def citascentros
+
+    citasporcentro = Citas.where(centros_medicos_id: @centros_medico.id)
+
+    render json: citasporcentro.as_json(include: [:pacientes ,:centros_medicos, :doctores])
   end
 
   # POST /centros_medicos

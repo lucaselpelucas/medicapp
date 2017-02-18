@@ -8,6 +8,9 @@ class PacientesController < ApplicationController
     @pacientes = Pacientes.where centros_medicos_id: params[:centros_medicos_id]
     render json: @pacientes
   end
+  def lookadmin
+
+  end
 
   def searchorcreate
      post = params[:user]
@@ -25,29 +28,29 @@ class PacientesController < ApplicationController
         advanced_typecasting true
         response_parser :nokogiri
       end
-      #results = ActiveRecord::Base.connection.exec_query %Q{CALL login('#{post}','#{pass}',@lls)}
-      #results = ActiveRecord::Base.connection.exec_query %Q{select @lls}
-      #ActiveRecord::Base.clear_active_connections!
       # TODO: hay que convertirlo a json para manipularlo de una mejor manera
       #render json: response
     #declaramos la variable para poder manipularla con facilidad en la siguientes lineas
     #TODO: call response succes and validate response.susses?
     sata = response.body[:obtener_xml_response][:obtener_xml_result][:beneficiario]
-
-    sata.to_hash.each do |list|
+    sata.each do |list|
       folio = list[:int64_folio_poliza] + "-" + list[:int_id_beneficiario]
       paciente = Pacientes.find_by(folio: folio)
       if paciente.blank?
-        centro = CentrosMedicos.find_by(clues: list[:str_clues])
+        centro = CentrosMedicos.find_by(SP: list[:str_clues])
         if centro.blank?
           centro = CentrosMedicos.new(UNIDADMEDICA: list[:str_unidad_medica],clues: list[:str_clues])
           if centro.save
             p "centro saved"
           else
-            p "centro existente"# render json: centro.errors, status: :unprocessable_entity
+            p "centro tuvo problema"# render json: centro.errors, status: :unprocessable_entity
           end
         end
-        paciente = Pacientes.new(centros_medicos_id: centro.centros_medicos_id ,POLIZA: list[:int64_folio_poliza],folio: folio)
+        d = DateTime.now()
+        idkey = d.strftime("%H%M%S%Y%m%d") + folio[-4..-1]
+        paciente = Pacientes.new(centros_medicos_id: centro.centros_medicos_id ,POLIZA: list[:int64_folio_poliza],
+        folio: idkey, SP: folio,primer_nombre: list[:str_nombres],fecha_nacimiento: list[:dt_ffecha_nacimiento],
+        CURP: list[:str_curp], SEXO: list[:chr_sexo] )
         if paciente.save
           p "paciente saved" #render json: paciente, status: :created
         else

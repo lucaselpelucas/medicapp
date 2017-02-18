@@ -1,0 +1,20 @@
+2017-02-13T17:45:19.616618342 0.306236s notice: Recursively removing directory /home/daniel/sites/medicapp/rethinkdb_data/tmp
+2017-02-13T17:45:19.622184608 0.311802s notice: Initializing directory /home/daniel/sites/medicapp/rethinkdb_data
+2017-02-13T17:45:19.622312832 0.311930s info: Creating a default database for your convenience. (This is because you ran 'rethinkdb' without 'create', 'serve', or '--join', and the directory '/home/daniel/sites/medicapp/rethinkdb_data' did not already exist or is empty.)
+2017-02-13T17:45:19.622412009 0.312029s notice: Running rethinkdb 2.3.5~0xenial (GCC 5.3.1)...
+2017-02-13T17:45:19.626490259 0.316109s notice: Running on Linux 4.4.0-62-generic x86_64
+2017-02-13T17:45:19.626542235 0.316159s notice: Loading data from directory /home/daniel/sites/medicapp/rethinkdb_data
+2017-02-13T17:45:19.653592880 0.343210s info: Automatically using cache size of 5682 MB
+2017-02-13T17:45:19.654807756 0.344425s notice: Listening for intracluster connections on port 29015
+2017-02-13T17:45:19.659893646 0.349511s notice: Listening for client driver connections on port 28015
+2017-02-13T17:45:19.660054374 0.349671s notice: Listening for administrative HTTP connections on port 8080
+2017-02-13T17:45:19.660057512 0.349674s notice: Listening on cluster addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-02-13T17:45:19.660062114 0.349679s notice: Listening on driver addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-02-13T17:45:19.660064741 0.349681s notice: Listening on http addresses: 127.0.0.1, 127.0.1.1, ::1
+2017-02-13T17:45:19.660068351 0.349685s notice: To fully expose RethinkDB on the network, bind to all addresses by running rethinkdb with the `--bind all` command line option.
+2017-02-13T17:45:19.660072089 0.349689s notice: Server ready, "daniel_Aspire_E5_573_2yt" 91eb3885-dd17-4e0f-bcfa-b1457316aff6
+2017-02-13T17:46:02.168688137 42.858305s notice: Server got SIGINT from pid 0, uid 0; shutting down...
+2017-02-13T17:46:02.168769238 42.858386s notice: Shutting down client connections...
+2017-02-13T17:46:02.168802144 42.858419s notice: All client connections closed.
+2017-02-13T17:46:02.168803675 42.858420s notice: Shutting down storage engine... (This may take a while if you had a lot of unflushed data in the writeback cache.)
+2017-02-13T17:46:02.170590826 42.860208s notice: Storage engine shut down.

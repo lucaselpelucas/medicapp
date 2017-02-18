@@ -1,7 +1,10 @@
 class DoctoresController < ApplicationController
+  before_action :check_header
+  before_action :set_doctorecentro, only: [:showoncentro]
   before_action :set_doctore, only: [:show, :update, :destroy]
-  before_action :validate_user, only: [:get,:create, :update, :destroy]
-  before_action :validate_type, only: [:create, :update]
+  before_action :validate_admin_login, only:[:index,:create,:update,:destroy]
+  before_action :validate_admin, only: [:index,:create, :update, :destroy]
+  # reparar este before action before_action :validate_type, only: [:create, :update]
 
   # GET /doctores
   def index
@@ -14,10 +17,17 @@ class DoctoresController < ApplicationController
   def show
     render json: @doctore
   end
+  # GET /doctorescentro/1
+  def showoncentro
+    if @doctorescentro.any?
+      render json: @doctorescentro
+    else
+      render json: @doctorescentro, status: 404
+    end
+  end
 
   # POST /doctores
   def create
-    binding.pry
     @doctore = Doctores.new(doctore_params)
 
     if @doctore.save
@@ -29,7 +39,6 @@ class DoctoresController < ApplicationController
 
   # PATCH/PUT /doctores/1
   def update
-    binding.pry
     if @doctore.update(doctore_params)
       render json: @doctore
     else
@@ -48,8 +57,14 @@ class DoctoresController < ApplicationController
       @doctore = Doctores.find(params[:id])
     end
 
+    def set_doctorecentro
+      @doctorescentro = Doctores.all.where(centros_medicos_id: params[:id_centro]).where("baja = ? OR baja is ?",0,nil)
+    end
+
     # Only allow a trusted parameter "white list" through.
     def doctore_params
-      params.permit(:centros_medicos_id, :nombre, :entrada, :salida, :universidad, :rssp, :cedulageneral, :cedulaespecial, :citasdia, :especialidades_id, :baja)
+      params.permit(:centros_medicos_id, :primer_nombre, :ENTRADA, :salida, :SALIDA, :UNIVERSIDAD,
+       :cedula_profesional, :SSA, :estatus, :especialidades_id, :baja, :segundo_nombre, :primer_apellido ,
+       :segundo_apellido, :nacionalidad, :consultorio_asignado, :tipo_contratacion, :inicio_contratacion, :fin_contratacion)
     end
 end

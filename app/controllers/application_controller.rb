@@ -22,6 +22,21 @@ class ApplicationController < ActionController::API
     end
   end
 
+  def validate_admin_login
+    token = request.headers["X-Api-Key"]
+    return unless token
+    admin = Administradores.find_by token: token
+    return unless admin
+    if 60.minutes.ago < admin.updated_at
+      admin.touch
+      @current_admin = admin
+    end
+  end
+
+  def validate_admin
+    head 403 and return unless @current_admin
+  end
+
   def validate_paciente
     head 403 and return unless @current_paciente
   end
@@ -35,7 +50,6 @@ class ApplicationController < ActionController::API
   end
 
   def validate_type
-    debugger
     if params['data'] && params['data']['type']
       if params['data']['type'] == params[:controller]
         return true
