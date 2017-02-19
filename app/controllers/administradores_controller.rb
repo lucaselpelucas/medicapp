@@ -2,6 +2,14 @@ class AdministradoresController < ApplicationController
   before_action :set_administrador, only: [:show]
 
   #POST
+  def create
+    @administrador = Administradores.new(administrador_params)
+    if @administrador.save
+      render json: @administrador, status: :created
+    else
+      render_error(@administrador, :unprocessable_entity)
+    end
+  end
 
   #GET
   # GET /doctores/1
@@ -21,6 +29,6 @@ class AdministradoresController < ApplicationController
     def administrador_params
       params.permit(:centros_medicos_id, :primer_nombre, :ENTRADA, :salida, :SALIDA, :UNIVERSIDAD,
        :cedula_profesional, :SSA, :estatus, :especialidades_id, :baja, :segundo_nombre, :primer_apellido ,
-       :segundo_apellido, :nacionalidad, :consultorio_asignado, :tipo_contratacion, :inicio_contratacion, :fin_contratacion)
+       :segundo_apellido, :nacionalidad, :consultorio_asignado, :tipo_contratacion, :password, :inicio_contratacion, :fin_contratacion)
     end
 end

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :administrativos
   #resources :administradores, :only =>[:show]
   # resources :centros_especialidades
+  post '/admin', to: 'administradores#create'
   post '/searchpatient', to: 'pacientes#searchorcreate'
   post '/citas/cancelar', to: 'citas#cancel'
   post '/citas/buscar', to: 'citas#search'
