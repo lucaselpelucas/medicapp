@@ -71,6 +71,6 @@ class EspecialidadesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def especialidade_params
-      params.permit(:nombre, :estatus)
+      params.require(:especialidades).permit(:nombre, :estatus)
     end
 end

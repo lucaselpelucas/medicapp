@@ -27,8 +27,10 @@ class AdministradoresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def administrador_params
-      params.permit(:centros_medicos_id, :primer_nombre, :ENTRADA, :salida, :SALIDA, :UNIVERSIDAD,
-       :cedula_profesional, :SSA, :estatus, :especialidades_id, :baja, :segundo_nombre, :primer_apellido ,
-       :segundo_apellido, :nacionalidad, :consultorio_asignado, :tipo_contratacion, :password, :inicio_contratacion, :fin_contratacion)
+      # params.permit(:centros_medicos_id, :primer_nombre, :ENTRADA, :salida, :SALIDA, :UNIVERSIDAD,
+      #  :cedula_profesional, :SSA, :estatus, :especialidades_id, :baja, :segundo_nombre, :primer_apellido ,
+      #  :segundo_apellido, :nacionalidad, :consultorio_asignado, :tipo_contratacion, :inicio_contratacion, :fin_contratacion)
+      params.require(:administradores).permit(:nacionalidad, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :nip, :permiso, :usuario, :centros_medicos_id, :sexo, :fecha_nacimiento, :puesto)
+
     end
 end

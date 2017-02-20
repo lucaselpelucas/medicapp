@@ -5,7 +5,7 @@ class PacientesController < ApplicationController
 
   # GET /pacientes
   def index
-    @pacientes = Pacientes.all
+    @pacientes = Pacientes.where centros_medicos_id: params[:centros_medicos_id]
     render json: @pacientes
   end
   def lookadmin
@@ -113,6 +113,7 @@ class PacientesController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def paciente_params
-      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+      params.require(:pacientes).permit(:nacionalidad, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :centros_medicos_id, :poliza, :folio, :nombre, :sexo, :fecha_nacimiento, :curp, :parentesco, :regimen, :domicilio, :colonia, :cp, :ciudad, :estado, :validez_inicio, :validez_termino, :reafiliacion)
+      # ActiveModelSerializers::Deserialization.jsonapi_parse(params)
     end
 end

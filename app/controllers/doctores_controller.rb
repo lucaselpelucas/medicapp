@@ -63,8 +63,10 @@ class DoctoresController < ApplicationController
 
     # Only allow a trusted parameter "white list" through.
     def doctore_params
-      params.permit(:centros_medicos_id, :primer_nombre, :ENTRADA, :salida, :SALIDA, :UNIVERSIDAD,
-       :cedula_profesional, :SSA, :estatus, :especialidades_id, :baja, :segundo_nombre, :primer_apellido ,
-       :segundo_apellido, :nacionalidad, :consultorio_asignado, :tipo_contratacion, :inicio_contratacion, :fin_contratacion)
+      params.require(:doctores).permit(:tipo_contratacion, :inicio_contratacion, :fin_contratacion, :nacionalidad, :primer_nombre, :segundo_nombre, :primer_apellido, :segundo_apellido, :centros_medicos_id, :entrada, :salida, :universidad, :ssa, :cedula_profesional, :especialidades_id, :baja, :consultorio_asignado)
+
+      # params.permit(:centros_medicos_id, :primer_nombre, :ENTRADA, :salida, :SALIDA, :UNIVERSIDAD,
+      #  :cedula_profesional, :SSA, :estatus, :especialidades_id, :baja, :segundo_nombre, :primer_apellido ,
+      #  :segundo_apellido, :nacionalidad, :consultorio_asignado, :tipo_contratacion, :inicio_contratacion, :fin_contratacion)
     end
 end
