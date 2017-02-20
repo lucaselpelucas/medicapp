@@ -14,12 +14,6 @@ class CentrosMedicosController < ApplicationController
   end
 
   #GET /citas_medicas/1
-  def citascentros
-
-    citasporcentro = Citas.where(centros_medicos_id: @centros_medico.id)
-
-    render json: citasporcentro.as_json(include: [:pacientes ,:centros_medicos, :doctores])
-  end
 
   # POST /centros_medicos
   # def create

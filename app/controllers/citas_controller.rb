@@ -9,6 +9,12 @@ class CitasController < ApplicationController
     @citas = Citas.all
     render json: @citas.as_json(include: [:pacientes ,:centros_medicos, :doctores])
   end
+  # POST /citasc
+  # otorga las citas por centro
+  def citascentro
+    @citascetro = Citas.where(centros_medicos_id: params[:centros_medicos_id]).where(fecha: Date.today)
+    render json: @citascetro.as_json(include: [:pacientes ,:centros_medicos, :doctores])
+  end
 
   # GET /citas/1
   def show
@@ -18,7 +24,6 @@ class CitasController < ApplicationController
   # POST /citas
   def create
     @cita = Citas.new(cita_params)
-
     if @cita.save
       render json: @cita, status: :created, location: @cita
     else
@@ -75,7 +80,6 @@ class CitasController < ApplicationController
     def set_cita
       @cita = Citas.find(params[:id])
     end
-
     # Only allow a trusted parameter "white list" through.
     def cita_params
       params.permit(:pacientes_id, :folio, :tipo_cita, :fecha, :telefono, :hora, :estatus, :cancelada, :doctores_id, :especialidades_id)
