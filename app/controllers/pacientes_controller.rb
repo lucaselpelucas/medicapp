@@ -28,16 +28,19 @@ class PacientesController < ApplicationController
         advanced_typecasting true
         response_parser :nokogiri
       end
+      debugger
       # TODO: hay que convertirlo a json para manipularlo de una mejor manera
       #render json: response
     #declaramos la variable para poder manipularla con facilidad en la siguientes lineas
     #TODO: call response succes and validate response.susses?
-    sata = response.body[:obtener_xml_response][:obtener_xml_result][:beneficiario]
+    sata = []
+    sata.push(response.body[:obtener_xml_response][:obtener_xml_result][:beneficiario])
     sata.each do |list|
+      debugger
       folio = list[:int64_folio_poliza] + "-" + list[:int_id_beneficiario]
       paciente = Pacientes.find_by(folio: folio)
       if paciente.blank?
-        centro = CentrosMedicos.find_by(SP: list[:str_clues])
+        centro = CentrosMedicos.find_by(clues: list[:str_clues])
         if centro.blank?
           centro = CentrosMedicos.new(UNIDADMEDICA: list[:str_unidad_medica],clues: list[:str_clues])
           if centro.save
@@ -69,9 +72,10 @@ class PacientesController < ApplicationController
   end
 
   def get_pacientes_poliza
-    post = params[:poliza]
-    results = Pacientes.where("POLIZA = #{post}")
+    post = params[:folio]
+    results = Pacientes.find_by(SP: post)
     render json: results
+
   end
 
   # POST /pacientes
