@@ -2,9 +2,9 @@
 lock "3.7.2"
 
 set :application, 'medicapp'
-set :use_sudo, false
 set :repo_url, 'git@github.com:danielosbaldo/medicapp.git' # Edit this to match your repository
 set :branch, :master
+set :user, 'deploy'
 set :deploy_to, '/home/deploy/medicapp'
 set :pty, true
 set :linked_files, %w{config/database.yml config/application.yml}
